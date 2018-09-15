@@ -16,11 +16,11 @@
     <% pages.forEach(function(page) { %>
         <tr id="id_<%= page._id %>" class="<%= page.slug %>">
         <td><%= page.title %></td>
-        <td><a href="/admin/pages/edit-page">Edit</a></td>
+        <td><a href="/admin/pages/edit-page/<%= page.slug %>">Edit</a></td>
         <% if(page.slug === "home") { %>
         <td></td>
         <% } else { %>
-        <td><a href="/admin/pages/delete-page">Delete</a></td>
+        <td><a class="confirmDeletion" href="/admin/pages/delete-page/<%= page._id %>">Delete</a></td>
         <% } %>
         </tr>
     <% }); %>
