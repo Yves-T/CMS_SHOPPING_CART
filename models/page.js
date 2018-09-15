@@ -8,11 +8,7 @@ const Pageschema = mongoose.Schema({
   slug: {
     type: String,
   },
-  conntent: {
-    type: String,
-    required: true,
-  },
-  conntent: {
+  content: {
     type: String,
     required: true,
   },
