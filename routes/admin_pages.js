@@ -79,4 +79,24 @@ router.post(
   },
 );
 
+router.post('/reorder-pages', (req, res) => {
+  // consol;
+  const ids = req.body['id[]'];
+  let count = 0;
+
+  for (var i = 0; i < ids.length; i++) {
+    const id = ids[i];
+    count++;
+    (function(count) {
+      Page.findById(id, (err, page) => {
+        page.sorting = count;
+        page.save(err => {
+          if (err) {
+          }
+        });
+      });
+    })(count);
+  }
+});
+
 module.exports = router;
