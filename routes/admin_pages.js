@@ -4,7 +4,13 @@ const { body, validationResult } = require('express-validator/check');
 const Page = require('../models/page');
 
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Home' });
+  Page.find({})
+    .sort({ sorting: 1 })
+    .exec((err, pages) => {
+      res.render('admin/pages', {
+        pages,
+      });
+    });
 });
 
 router.get('/add-page', (req, res) => {
@@ -57,7 +63,7 @@ router.post(
             title,
             slug,
             content,
-            sorting: 0,
+            sorting: 100,
           });
           page.save(err => {
             if (err) {
