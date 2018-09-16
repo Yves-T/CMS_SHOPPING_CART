@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const { database } = require('./config/database');
 const pages = require('./routes/pages');
 const adminPages = require('./routes/admin_pages');
+const adminCategories = require('./routes/admin_categories');
 
 mongoose.connect(
   database,
@@ -43,6 +44,7 @@ app.locals.errors = null;
 
 // set routes
 app.use('/admin/pages', adminPages);
+app.use('/admin/categories', adminCategories);
 app.use('/', pages);
 
 const port = 3000;
